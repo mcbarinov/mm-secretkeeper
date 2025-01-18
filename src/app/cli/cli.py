@@ -1,12 +1,30 @@
 import getpass
+from typing import Annotated
 
 import pyperclip
 import typer
 from mm_std import hr, print_json, print_plain
 
+from app.cli import daemon
+from app.http_server import run_http_server
+
 BASE_URL = "http://localhost:3000"
 
 app = typer.Typer(no_args_is_help=True, pretty_exceptions_enable=False, add_completion=False)
+
+
+@app.command(name="start")
+def start_command(daemonize: Annotated[bool, typer.Option("-d")] = True) -> None:
+    port = 3000
+    if daemonize:
+        daemon.start(port)
+    else:
+        run_http_server(port)
+
+
+@app.command("stop")
+def stop_command() -> None:
+    daemon.stop()
 
 
 @app.command(name="lock")

@@ -8,6 +8,7 @@ dependencies = [
     "mm-std>=0.1.9",
     "pyperclip>=1.9.0",
     "sqlcipher3>=0.5.4",
+    "python-daemon==3.1.2",
     "typer>=0.15.1",
 ]
 [project.scripts]
@@ -35,7 +36,7 @@ warn_no_return = false
 strict = true
 plugins = "pydantic.mypy"
 [[tool.mypy.overrides]]
-module = ["sqlcipher3.*"]
+module = ["sqlcipher3.*", "pyperclip.*", "daemon.*"]
 ignore_missing_imports = true
 
 

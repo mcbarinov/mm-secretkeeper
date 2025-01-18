@@ -1,9 +1,11 @@
 from typing import Annotated
 
-from app.server.keeper import Health, Keeper, KeeperResult, KeyResult, KeysResult, get_keeper
+import uvicorn
 from fastapi import FastAPI, Form
 from fastapi.params import Depends
 from pydantic import BaseModel
+
+from app.keeper import Health, Keeper, KeeperResult, KeyResult, KeysResult, get_keeper
 
 app = FastAPI(docs_url="/")
 
@@ -69,3 +71,7 @@ def get_handler(keeper: KeeperDepends, key: Annotated[str, Form()]) -> KeyResult
 def delete_handler(keeper: KeeperDepends, key: Annotated[str, Form()]) -> KeeperResult:
     """Delete a secret by key"""
     return keeper.delete(key)
+
+
+def run_http_server(port: int) -> None:
+    uvicorn.run(app, host="localhost", port=port)
