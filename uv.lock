@@ -24,51 +24,6 @@ wheels = [
 ]
 
 [[package]]
-name = "app"
-version = "0.0.1"
-source = { editable = "." }
-dependencies = [
-    { name = "fastapi", extra = ["all"] },
-    { name = "mm-std" },
-    { name = "pyperclip" },
-    { name = "python-daemon" },
-    { name = "sqlcipher3" },
-    { name = "typer" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "bandit" },
-    { name = "mypy" },
-    { name = "pip-audit" },
-    { name = "pytest" },
-    { name = "pytest-httpserver" },
-    { name = "pytest-xdist" },
-    { name = "ruff" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "fastapi", extras = ["all"], specifier = ">=0.115.6" },
-    { name = "mm-std", specifier = ">=0.1.9" },
-    { name = "pyperclip", specifier = ">=1.9.0" },
-    { name = "python-daemon", specifier = "==3.1.2" },
-    { name = "sqlcipher3", specifier = ">=0.5.4" },
-    { name = "typer", specifier = ">=0.15.1" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "bandit", specifier = "~=1.8.0" },
-    { name = "mypy", specifier = "~=1.14.1" },
-    { name = "pip-audit", specifier = "~=2.7.3" },
-    { name = "pytest", specifier = "~=8.3.4" },
-    { name = "pytest-httpserver", specifier = "~=1.1.0" },
-    { name = "pytest-xdist", specifier = "~=3.6.1" },
-    { name = "ruff", specifier = "~=0.9.2" },
-]
-
-[[package]]
 name = "bandit"
 version = "1.8.2"
 source = { registry = "https://pypi.org/simple" }
@@ -539,6 +494,51 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba", size = 8729 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8", size = 9979 },
+]
+
+[[package]]
+name = "mm-secretkeeper"
+version = "0.0.1"
+source = { editable = "." }
+dependencies = [
+    { name = "fastapi", extra = ["all"] },
+    { name = "mm-std" },
+    { name = "pyperclip" },
+    { name = "python-daemon" },
+    { name = "sqlcipher3" },
+    { name = "typer" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "bandit" },
+    { name = "mypy" },
+    { name = "pip-audit" },
+    { name = "pytest" },
+    { name = "pytest-httpserver" },
+    { name = "pytest-xdist" },
+    { name = "ruff" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastapi", extras = ["all"], specifier = "~=0.115.6" },
+    { name = "mm-std", specifier = "~=0.1.9" },
+    { name = "pyperclip", specifier = "~=1.9.0" },
+    { name = "python-daemon", specifier = "==3.1.2" },
+    { name = "sqlcipher3", specifier = "~=0.5.4" },
+    { name = "typer", specifier = "~=0.15.1" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "bandit", specifier = "~=1.8.0" },
+    { name = "mypy", specifier = "~=1.14.1" },
+    { name = "pip-audit", specifier = "~=2.7.3" },
+    { name = "pytest", specifier = "~=8.3.4" },
+    { name = "pytest-httpserver", specifier = "~=1.1.0" },
+    { name = "pytest-xdist", specifier = "~=3.6.1" },
+    { name = "ruff", specifier = "~=0.9.2" },
 ]
 
 [[package]]

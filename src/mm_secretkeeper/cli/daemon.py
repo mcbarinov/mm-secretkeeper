@@ -5,11 +5,11 @@ import daemon
 import typer
 from daemon import pidfile
 
-from app.http_server import run_http_server
+from mm_secretkeeper.http_server import run_http_server
 
-PID_FILE = Path("/tmp/mm-secret-keeper.pid")
-STDOUT_FILE = Path("/tmp/mm-secret-keeper-stdout.log")
-STDERR_FILE = Path("/tmp/mm-secret-keeper-stderr.log")
+PID_FILE = Path("/tmp/mm-secret-keeper.pid")  # nosec
+STDOUT_FILE = Path("/tmp/mm-secret-keeper-stdout.log")  # nosec
+STDERR_FILE = Path("/tmp/mm-secret-keeper-stderr.log")  # nosec
 
 
 def start(port: int) -> None:

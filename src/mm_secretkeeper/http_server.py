@@ -5,7 +5,7 @@ from fastapi import FastAPI, Form
 from fastapi.params import Depends
 from pydantic import BaseModel
 
-from app.keeper import Health, Keeper, KeeperResult, KeyResult, KeysResult, get_keeper
+from mm_secretkeeper.keeper import Health, Keeper, KeeperResult, KeyResult, KeysResult, get_keeper
 
 app = FastAPI(docs_url="/")
 

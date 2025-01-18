@@ -1,7 +1,12 @@
+version := `uv run python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])'`
+
 default: dev
 
 clean:
 	rm -rf .pytest_cache .ruff_cache .mypy_cache build dist src/*.egg-info
+
+build: clean
+    uv build --wheel
 
 sync:
     uv sync
@@ -21,7 +26,12 @@ audit:
 test:
     uv run pytest tests
 
+publish: build lint audit test
+    git diff-index --quiet HEAD
+    uvx twine upload dist/**
+    git tag -a 'v{{version}}' -m 'v{{version}}'
+    git push origin v{{version}}
+
+
 dev:
-    fastapi dev src/app/server/server.py --port 3000 # uv run uvicorn --reload --port 3000 --log-level warning app.main:server
-
-
+    fastapi dev src/mm_secretkeeper/http_server.py --port 3000

@@ -5,8 +5,8 @@ import pyperclip
 import typer
 from mm_std import hr, print_json, print_plain
 
-from app.cli import daemon
-from app.http_server import run_http_server
+from mm_secretkeeper.cli import daemon
+from mm_secretkeeper.http_server import run_http_server
 
 BASE_URL = "http://localhost:3000"
 
