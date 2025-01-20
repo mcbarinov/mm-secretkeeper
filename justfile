@@ -34,4 +34,4 @@ publish: build lint audit test
 
 
 dev:
-    fastapi dev src/mm_secretkeeper/http_server.py --port 3000
+    fastapi dev src/mm_secretkeeper/web.py --port 3000

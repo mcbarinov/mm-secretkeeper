@@ -1,8 +1,9 @@
-import os.path
 from pathlib import Path
 
 import sqlcipher3
 from pydantic import BaseModel
+
+from mm_secretkeeper.config import get_config
 
 
 class Health(BaseModel):
@@ -32,8 +33,8 @@ class Keeper:
     db_path: Path
     password: str | None = None
 
-    def __init__(self, db_path: str) -> None:
-        self.db_path = Path(os.path.expandvars(db_path))
+    def __init__(self, base_dir: Path) -> None:
+        self.db_path = base_dir / "data.db"
 
     def health(self) -> Health:
         secrets, error = None, None
@@ -141,7 +142,7 @@ class Keeper:
         return conn
 
 
-_keeper = Keeper("${HOME}/.secret-keeper")
+_keeper = Keeper(get_config().base_dir)
 
 
 def get_keeper() -> Keeper:

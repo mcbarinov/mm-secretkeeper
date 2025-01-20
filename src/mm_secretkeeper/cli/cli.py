@@ -6,25 +6,27 @@ import typer
 from mm_std import hr, print_json, print_plain
 
 from mm_secretkeeper.cli import daemon
-from mm_secretkeeper.http_server import run_http_server
+from mm_secretkeeper.config import get_config
+from mm_secretkeeper.web import run_http_server
 
-BASE_URL = "http://localhost:3000"
+BASE_URL = f"http://localhost:{get_config().web_port}"
 
 app = typer.Typer(no_args_is_help=True, pretty_exceptions_enable=False, add_completion=False)
 
 
 @app.command(name="start")
 def start_command(daemonize: Annotated[bool, typer.Option("-d")] = True) -> None:
-    port = 3000
+    config = get_config()
     if daemonize:
-        daemon.start(port)
+        daemon.start(config)
     else:
-        run_http_server(port)
+        run_http_server(config.web_port)
 
 
 @app.command("stop")
 def stop_command() -> None:
-    daemon.stop()
+    config = get_config()
+    daemon.stop(config)
 
 
 @app.command(name="lock")
@@ -49,11 +51,11 @@ def health_command() -> None:
 @app.command(name="list")
 def list_command() -> None:
     res = hr(f"{BASE_URL}/list")
-    if res.json.get("keys") and not res.json.get("error"):
+    if res.json and res.json.get("keys") and not res.json.get("error"):
         for k in res.json["keys"]:
             print_plain(k)
     else:
-        print_json(res.json)
+        print_json(res)
 
 
 @app.command(name="get")

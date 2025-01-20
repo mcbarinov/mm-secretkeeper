@@ -523,7 +523,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "fastapi", extras = ["all"], specifier = "~=0.115.6" },
-    { name = "mm-std", specifier = "~=0.1.9" },
+    { name = "mm-std", specifier = "~=0.1.10" },
     { name = "pyperclip", specifier = "~=1.9.0" },
     { name = "python-daemon", specifier = "==3.1.2" },
     { name = "sqlcipher3", specifier = "~=0.5.4" },
@@ -543,7 +543,7 @@ dev = [
 
 [[package]]
 name = "mm-std"
-version = "0.1.9"
+version = "0.1.10"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cryptography" },
@@ -555,7 +555,7 @@ dependencies = [
     { name = "rich" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/96/68/05221e7d6f0411f380fdbb40d7bdceb2597554257a8a2ee0a74bf7dcd577/mm_std-0.1.9-py3-none-any.whl", hash = "sha256:8405d67d885be381d01492e72e5c0039dd893a95a1df65994bcb990a28ae04d1", size = 15130 },
+    { url = "https://files.pythonhosted.org/packages/30/ad/0fcb4791f823b4190dd8cc0f0b1fe81b3c492067b7e8c124ea162ece732c/mm_std-0.1.10-py3-none-any.whl", hash = "sha256:5be05a5430405ea61ae44c444cdbfb17a242fccdcab720e789b3084eef9ff65c", size = 14448 },
 ]
 
 [[package]]
