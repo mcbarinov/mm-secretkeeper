@@ -83,13 +83,16 @@ def list_command() -> None:
 
 
 @app.command(name="get, g")
-def get_command() -> None:
+def get_command(print_value: bool = False) -> None:
     key = input("key: ")
     res = hr(f"{BASE_URL}/get", method="POST", params={"key": key}, json_params=False)
     if res.json.get("value"):
         value = res.json.get("value")
-        print_plain(value)
         pyperclip.copy(value)
+        if print_value:
+            print_plain(value)
+        else:
+            print_plain("Value copied to clipboard.")
     else:
         print_json(res.json)
 
