@@ -24,13 +24,14 @@ def start(config: Config) -> None:
 
 def stop(config: Config) -> None:
     """Stop the daemon process."""
-    if config.daemon_pid.exists():
-        pid = int(config.daemon_pid.read_text().strip())
+    pid_file = config.base_dir / "process.pid"
+    if pid_file.exists():
+        pid = int(pid_file.read_text())
         try:
             os.kill(pid, 15)  # Send SIGTERM signal
             typer.echo(f"Daemon process (PID {pid}) terminated.")
         except ProcessLookupError:
             typer.echo("Process not found.")
-        config.daemon_pid.unlink()  # Remove the PID file
+        pid_file.unlink()  # Remove the PID file
     else:
         typer.echo("Daemon is not running (PID file not found).")
